@@ -39,6 +39,7 @@ class App extends Component {
 
   render() {
     const person = this.state.persons;
+    let persons = null;
     const btn = {
       padding: '8px',
       border: '1px solid #eee',
@@ -47,26 +48,30 @@ class App extends Component {
       color: 'white'
     };
 
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <button style={btn} onClick={this.nameHandler.bind(this, 'Mat')}>
+            call me
+          </button>
+          <Person name="React">Hello there {':)'}</Person>
+          <Person name={person[0].name} age={person[0].age} />
+          <Person
+            mobin={this.state.mobin}
+            name={person[1].name}
+            age={person[1].age}
+            changed={this.inputHandler}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <button style={btn} onClick={() => this.switchHandler()}>
           Toggle
         </button>
-        {this.state.showPersons ? (
-          <div>
-            <button style={btn} onClick={this.nameHandler.bind(this, 'Mat')}>
-              call me
-            </button>
-            <Person name="React">Hello there {':)'}</Person>
-            <Person name={person[0].name} age={person[0].age} />
-            <Person
-              mobin={this.state.mobin}
-              name={person[1].name}
-              age={person[1].age}
-              changed={this.inputHandler}
-            />
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
