@@ -21,13 +21,11 @@ class App extends Component {
 
     if (this.state.persons[0].name === newName) {
       person.name = 'Matin';
-      persons[0] = person;
-      this.setState({ persons });
     } else {
       person.name = newName;
-      persons[0] = person;
-      this.setState({ persons });
     }
+    persons[0] = person;
+    this.setState({ persons });
   };
 
   inputHandler = event => {
