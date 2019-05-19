@@ -7,6 +7,7 @@ import './App.css';
 class App extends Component {
   state = {
     persons: [{ name: 'Matin', age: 27 }, { name: 'Mobin', age: 26 }],
+    VIP: { name: 'React' },
     showPersons: false,
     mobin: true
   };
@@ -25,11 +26,14 @@ class App extends Component {
 
   inputHandler = event => {
     this.setState({
-      persons: [
-        { name: 'Matin', age: 27 },
-        { name: event.target.value, age: 26 }
-      ]
+      VIP: { name: event.target.value, age: 'immortal' }
     });
+  };
+
+  deleteHandler = index => {
+    const persons = this.state.persons;
+    let updatedPersons = persons.filter(person => person.key !== index);
+    this.setState({ persons: updatedPersons });
   };
 
   switchHandler = () => {
@@ -38,7 +42,6 @@ class App extends Component {
   };
 
   render() {
-    const person = this.state.persons;
     let persons = null;
     const btn = {
       padding: '8px',
@@ -54,14 +57,22 @@ class App extends Component {
           <button style={btn} onClick={this.nameHandler.bind(this, 'Mat')}>
             call me
           </button>
-          <Person name="React">Hello there {':)'}</Person>
-          <Person name={person[0].name} age={person[0].age} />
           <Person
-            mobin={this.state.mobin}
-            name={person[1].name}
-            age={person[1].age}
             changed={this.inputHandler}
-          />
+            name={this.state.VIP.name}
+            mobin={this.state.mobin}>
+            Hello there {':)'}
+          </Person>
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                key={index}
+                name={person.name}
+                age={person.age}
+                click={() => this.deleteHandler(index)}
+              />
+            );
+          })}
         </div>
       );
     }

@@ -4,13 +4,16 @@ import './Person.css';
 const Person = props => {
   return (
     <div className="Person">
-      <h3>
+      <h3 onClick={props.click}>
         This is {props.name} {props.age}
       </h3>
       <div>{props.children}</div>
-      {props.mobin ? (
-        <input type="text" onChange={props.changed} value={props.name} />
-      ) : null}
+      <br />
+      <div>
+        {props.mobin ? (
+          <input type="text" onChange={props.changed} value={props.name} />
+        ) : null}
+      </div>
     </div>
   );
 };
