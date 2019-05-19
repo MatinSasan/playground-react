@@ -6,7 +6,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    persons: [{ name: 'Matin', age: 27 }, { name: 'Mobin', age: 26 }],
+    persons: [
+      { id: null, name: 'Matin', age: 27 },
+      { id: null, name: 'Mobin', age: 26 }
+    ],
     VIP: { name: 'React' },
     showPersons: false,
     mobin: true
@@ -15,11 +18,17 @@ class App extends Component {
   nameHandler = newName => {
     if (this.state.persons[0].name === newName) {
       this.setState({
-        persons: [{ name: 'Matin', age: 27 }, { name: 'Mobin', age: 26 }]
+        persons: [
+          { id: null, name: 'Matin', age: 27 },
+          { id: null, name: 'Mobin', age: 26 }
+        ]
       });
     } else {
       this.setState({
-        persons: [{ name: newName, age: 27 }, { name: 'Mobin', age: 26 }]
+        persons: [
+          { id: null, name: newName, age: 27 },
+          { id: null, name: 'Mobin', age: 26 }
+        ]
       });
     }
   };
@@ -31,9 +40,10 @@ class App extends Component {
   };
 
   deleteHandler = index => {
-    const persons = this.state.persons;
-    let updatedPersons = persons.filter(person => person.key !== index);
-    this.setState({ persons: updatedPersons });
+    const persons = [...this.state.persons].filter(
+      person => person.id !== index
+    );
+    this.setState({ persons });
   };
 
   switchHandler = () => {
@@ -42,7 +52,8 @@ class App extends Component {
   };
 
   render() {
-    let persons = null;
+    // styling
+
     const btn = {
       padding: '8px',
       border: '1px solid #eee',
@@ -50,6 +61,9 @@ class App extends Component {
       backgroundColor: 'green',
       color: 'white'
     };
+
+    // toggle
+    let persons = null;
 
     if (this.state.showPersons) {
       persons = (
@@ -66,7 +80,7 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
-                key={index}
+                key={(person.id = index)}
                 name={person.name}
                 age={person.age}
                 click={() => this.deleteHandler(index)}
@@ -77,6 +91,7 @@ class App extends Component {
       );
     }
 
+    // Final render
     return (
       <div className="App">
         <button style={btn} onClick={() => this.switchHandler()}>
