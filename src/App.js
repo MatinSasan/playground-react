@@ -16,20 +16,17 @@ class App extends Component {
   };
 
   nameHandler = newName => {
+    const person = { ...this.state.persons[0] };
+    const persons = [...this.state.persons];
+
     if (this.state.persons[0].name === newName) {
-      this.setState({
-        persons: [
-          { id: null, name: 'Matin', age: 27 },
-          { id: null, name: 'Mobin', age: 26 }
-        ]
-      });
+      person.name = 'Matin';
+      persons[0] = person;
+      this.setState({ persons });
     } else {
-      this.setState({
-        persons: [
-          { id: null, name: newName, age: 27 },
-          { id: null, name: 'Mobin', age: 26 }
-        ]
-      });
+      person.name = newName;
+      persons[0] = person;
+      this.setState({ persons });
     }
   };
 
