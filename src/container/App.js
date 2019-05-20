@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Persons from '../components/Persons';
-import ErrorBoundary from '../ErrorBoundary/errorBoundary';
-import CallMe from '../components/CallMe';
+import Head from '../components/Head';
+import AwesomePhrase from '../components/AwesomePhrase/AwesomePhrase';
 
 import './App.css';
 
@@ -74,25 +74,16 @@ class App extends Component {
 
     // toggle
     let persons = null;
-
     if (this.state.showPersons) {
       persons = (
         <div className="person">
-          <br />
-          <button
+          <Head
             disabled={this.state.persons.length === 0}
-            className="btn call"
-            onClick={this.nameHandler.bind(this, 'Mat')}>
-            call me
-          </button>
-          <br />
-
-          <CallMe
+            onClick={this.nameHandler.bind(this, 'Mat')}
             changed={this.inputHandler}
             name={this.state.VIP.name}
             mobin={this.state.mobin}
           />
-
           <Persons persons={this.state.persons} click={this.deleteHandler} />
         </div>
       );
@@ -100,30 +91,17 @@ class App extends Component {
       btn.color = 'white';
     }
 
-    //
-    let awesomePhrase = '';
-    const classes = [];
-    if (!this.state.showPersons) {
-      awesomePhrase = 'Nobody is here, it seems :/';
-    }
-    if (this.state.showPersons && this.state.persons.length === 2) {
-      awesomePhrase = 'All aboard :D';
-    }
-    if (this.state.persons.length === 1) {
-      classes.push('bold');
-    }
-    if (this.state.persons.length === 0) {
-      classes.push('all');
-    }
-    console.log(this.state.persons.length);
-
     // Final render
     return (
       <div className="App">
         <button style={btn} onClick={() => this.switchHandler()}>
           Toggle
         </button>
-        <h2 className={classes}>{this.state.awesomePhrase || awesomePhrase}</h2>
+        <AwesomePhrase
+          presence={this.state.showPersons}
+          length={this.state.persons.length}
+          awesomePhrase={this.state.awesomePhrase}
+        />
         {persons}
       </div>
     );
