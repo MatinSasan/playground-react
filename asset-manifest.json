@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/playground-react/static/css/main.7b67b5cd.chunk.css",
-    "main.js": "/playground-react/static/js/main.2712b582.chunk.js",
-    "main.js.map": "/playground-react/static/js/main.2712b582.chunk.js.map",
+    "main.css": "/playground-react/static/css/main.45f6970e.chunk.css",
+    "main.js": "/playground-react/static/js/main.d552f49d.chunk.js",
+    "main.js.map": "/playground-react/static/js/main.d552f49d.chunk.js.map",
     "runtime~main.js": "/playground-react/static/js/runtime~main.e33c4099.js",
     "runtime~main.js.map": "/playground-react/static/js/runtime~main.e33c4099.js.map",
-    "static/js/2.97294558.chunk.js": "/playground-react/static/js/2.97294558.chunk.js",
-    "static/js/2.97294558.chunk.js.map": "/playground-react/static/js/2.97294558.chunk.js.map",
+    "static/js/2.fe6f4c48.chunk.js": "/playground-react/static/js/2.fe6f4c48.chunk.js",
+    "static/js/2.fe6f4c48.chunk.js.map": "/playground-react/static/js/2.fe6f4c48.chunk.js.map",
     "index.html": "/playground-react/index.html",
-    "precache-manifest.cdf7b337ead725312bd30e745fe92354.js": "/playground-react/precache-manifest.cdf7b337ead725312bd30e745fe92354.js",
+    "precache-manifest.687b67ed88873e46d1576efd4e72da25.js": "/playground-react/precache-manifest.687b67ed88873e46d1576efd4e72da25.js",
     "service-worker.js": "/playground-react/service-worker.js",
-    "static/css/main.7b67b5cd.chunk.css.map": "/playground-react/static/css/main.7b67b5cd.chunk.css.map"
+    "static/css/main.45f6970e.chunk.css.map": "/playground-react/static/css/main.45f6970e.chunk.css.map"
   }
 }
