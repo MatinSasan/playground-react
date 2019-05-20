@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import Person from './components/Person/Person';
-import ErrorBoundary from './ErrorBoundary/errorBoundary';
+import Persons from '../components/Persons';
+import ErrorBoundary from '../ErrorBoundary/errorBoundary';
+import CallMe from '../components/CallMe';
 
 import './App.css';
 
@@ -36,10 +37,8 @@ class App extends Component {
     });
   };
 
-  deleteHandler = index => {
-    const persons = [...this.state.persons].filter(
-      person => person.id !== index
-    );
+  deleteHandler = id => {
+    const persons = [...this.state.persons].filter(person => person.id !== id);
 
     if (persons.length === 0) {
       this.setState({ awesomePhrase: 'where did they all go?' });
@@ -65,11 +64,11 @@ class App extends Component {
 
     const btn = {
       padding: '8px',
+      marginTop: '20px',
       width: '100px',
-      norder: '1px solid #eee',
+      border: '1px solid #eee',
       cursor: 'pointer',
       backgroundColor: 'green',
-      border: '1px solid lightgreen',
       color: 'white'
     };
 
@@ -87,24 +86,14 @@ class App extends Component {
             call me
           </button>
           <br />
-          <Person
+
+          <CallMe
             changed={this.inputHandler}
             name={this.state.VIP.name}
-            mobin={this.state.mobin}>
-            Hello there {':)'}
-          </Person>
-          {this.state.persons.map(person => {
-            return (
-              <ErrorBoundary>
-                <Person
-                  key={person.id}
-                  name={person.name}
-                  age={person.age}
-                  click={() => this.deleteHandler(person.id)}
-                />
-              </ErrorBoundary>
-            );
-          })}
+            mobin={this.state.mobin}
+          />
+
+          <Persons persons={this.state.persons} click={this.deleteHandler} />
         </div>
       );
       btn.backgroundColor = 'red';
