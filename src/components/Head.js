@@ -1,5 +1,5 @@
 import React from 'react';
-import CallMe from './CallMe';
+import HelloComponent from './HelloComponent';
 import '../container/App.css';
 import Aucs from '../hoc/Aucs';
 
@@ -10,10 +10,14 @@ const Head = props => {
         disabled={props.disabled}
         className="btn call"
         onClick={props.onClick}>
-        call me
+        Call me
       </button>
 
-      <CallMe changed={props.changed} name={props.name} mobin={props.mobin} />
+      <HelloComponent
+        changed={props.changed}
+        name={props.name}
+        mobin={props.mobin}
+      />
     </Aucs>
   );
 };

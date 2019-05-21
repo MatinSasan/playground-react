@@ -6,6 +6,10 @@ import AwesomePhrase from '../components/AwesomePhrase/AwesomePhrase';
 
 import './App.css';
 
+const LengthContext = React.createContext({});
+export const LengthProvider = LengthContext.Provider;
+export const LengthConsumer = LengthContext.Consumer;
+
 class App extends Component {
   state = {
     persons: [
@@ -77,13 +81,15 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div className="person">
-          <Head
-            disabled={this.state.persons.length === 0}
-            onClick={this.nameHandler.bind(this, 'Mat')}
-            changed={this.inputHandler}
-            name={this.state.VIP.name}
-            mobin={this.state.mobin}
-          />
+          <LengthProvider value={this.state.persons.length}>
+            <Head
+              disabled={this.state.persons.length === 0}
+              onClick={this.nameHandler.bind(this, 'Mat')}
+              changed={this.inputHandler}
+              name={this.state.VIP.name}
+              mobin={this.state.mobin}
+            />
+          </LengthProvider>
           <Persons persons={this.state.persons} click={this.deleteHandler} />
         </div>
       );
