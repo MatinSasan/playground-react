@@ -1,37 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './AwesomePhrase.css';
+import { PhraseContext } from '../../container/App';
 
-const AwesomePhrase = props => {
+const AwesomePhrase = () => {
+  const { per, show, length } = useContext(PhraseContext);
+
   let awesomePhrase = '';
   const classes = [];
 
-  if (props.length === 1) {
+  if (length === 1) {
     classes.push('bold');
   }
-  if (props.length === 0) {
+  if (length === 0) {
     classes.push('all');
   }
 
-  if (props.length === 0) {
+  if (length === 0) {
     awesomePhrase = 'where did they all go?';
   }
 
-  if (props.persons.some(p => p.name !== 'Mobin')) {
+  if (per.some(p => p.name !== 'Mobin')) {
     awesomePhrase = 'Where is Mobin?';
   }
-  if (props.persons.some(p => p.name !== 'Matin')) {
+  if (per.some(p => p.name !== 'Matin')) {
     awesomePhrase = 'Where is Matin?';
   }
 
-  if (props.presence && props.length === 2) {
+  if (show && length === 2) {
     awesomePhrase = 'All aboard :D';
   }
 
-  if (!props.presence) {
+  if (!show) {
     awesomePhrase = 'Nobody is here, it seems :/';
   }
 
-  console.log(props.length);
+  console.log(length);
 
   return <h2 className={classes}>{awesomePhrase}</h2>;
 };

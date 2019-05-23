@@ -1,3 +1,6 @@
+// Hello andwelcome. Here I will use different approaches together
+// to demonstrate my competency in React
+
 import React, { useState } from 'react';
 
 import Persons from '../components/Persons';
@@ -9,6 +12,10 @@ import styles from './App.module.css';
 const LengthContext = React.createContext({});
 export const LengthProvider = LengthContext.Provider;
 export const LengthConsumer = LengthContext.Consumer;
+
+export const PhraseContext = React.createContext();
+export const PhraseProvider = PhraseContext.Provider;
+// instead of consumer, useContext will be used in this case
 
 const App = () => {
   const [state, setState] = useState({
@@ -98,17 +105,18 @@ const App = () => {
     btn.color = 'white';
   }
 
+  // PhraseProvider variables
+  const { persons: per, showPersons: show } = state;
+  const { length } = state.persons;
   // Final render
   return (
     <div className={styles.App}>
       <button style={btn} onClick={() => switchHandler()}>
         Toggle
       </button>
-      <AwesomePhrase
-        presence={state.showPersons}
-        length={state.persons.length}
-        persons={state.persons}
-      />
+      <PhraseProvider value={{ per, show, length }}>
+        <AwesomePhrase />
+      </PhraseProvider>
       {persons}
     </div>
   );
