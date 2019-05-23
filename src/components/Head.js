@@ -1,6 +1,6 @@
 import React from 'react';
 import HelloComponent from './HelloComponent';
-import '../container/App.css';
+import '../container/App.module.css';
 import Aucs from '../hoc/Aucs';
 
 const Head = props => {
