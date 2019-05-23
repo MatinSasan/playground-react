@@ -45,16 +45,16 @@ const App = () => {
   const deleteHandler = id => {
     const persons = [...state.persons].filter(person => person.id !== id);
 
-    if (persons.length === 0) {
-      setState({ ...state, awesomePhrase: 'where did they all go?' });
-    }
+    // if (persons.length === 0) {
+    //   setState({ ...state, awesomePhrase: 'where did they all go?' });
+    // }
 
-    if (persons.some(p => p.name !== 'Mobin')) {
-      setState({ ...state, awesomePhrase: 'Where is Mobin?' });
-    }
-    if (persons.some(p => p.name !== 'Matin')) {
-      setState({ ...state, awesomePhrase: 'Where is Matin?' });
-    }
+    // if (persons.some(p => p.name !== 'Mobin')) {
+    //   setState({ ...state, awesomePhrase: 'Where is Mobin?' });
+    // }
+    // if (persons.some(p => p.name !== 'Matin')) {
+    //   setState({ ...state, awesomePhrase: 'Where is Matin?' });
+    // }
 
     setState({ ...state, persons });
   };
@@ -107,7 +107,7 @@ const App = () => {
       <AwesomePhrase
         presence={state.showPersons}
         length={state.persons.length}
-        awesomePhrase={state.awesomePhrase}
+        persons={state.persons}
       />
       {persons}
     </div>
